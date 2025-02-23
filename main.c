@@ -50,9 +50,9 @@ int main()
 	mlx.win = mlx_new_window(mlx.mlx, 800, 600, "fract-ol");
 	mlx.img = mlx_new_image(mlx.mlx, 800, 600);
 	mlx.add = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_len, &mlx.endian);
-	for (int j = 0; j < 800; j++)
+	for (int j = 0; j < 600; j++)
 	{
-		for (int i = 0; i < 600; i++)
+		for (int i = 0; i < 800; i++)
 		{
 			iteration = ft_check_if_mandelbort(i, j, mlx.iteration);
 			color = get_color(iteration, mlx.iteration);
