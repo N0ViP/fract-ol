@@ -17,6 +17,7 @@
 # include <complex.h>
 # include <mlx.h>
 # include <math.h>
+# include "minilibx-linux/mlx.h"
 
 typedef	struct	s_complex
 {

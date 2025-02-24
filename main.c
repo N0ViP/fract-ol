@@ -17,8 +17,8 @@ int	ft_check_if_mandelbort(int x, int y, int iteration)
 
 	z.real = 0;
 	z.imag = 0;
-	c.real = ((x - 400) * 4) / 800.;
-	c.imag = ((y - 400) * 4) / 800.;
+	c.real = (x - 400) / 200.;
+	c.imag = (y - 400) / 200.;
 	i = 0;
 	while (i < iteration)
 	{
@@ -53,7 +53,7 @@ int main()
 	mlx.add = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_len, &mlx.endian);
 	for (int j = 0; j < 800; j++)
 	{
-		for (int i = 0; i < 800; i++)
+    	for (int i = 0; i < 1800; i++)
 		{
 			iteration = ft_check_if_mandelbort(i, j, mlx.iteration);
 			color = get_color(iteration, mlx.iteration);
