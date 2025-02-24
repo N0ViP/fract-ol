@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <complex.h>
-#include <mlx.h>
 #include "fract-ol.h"
 
 void	put_pixel(t_mlx *mlx, int x, int y, int color)
@@ -13,22 +10,26 @@ void	put_pixel(t_mlx *mlx, int x, int y, int color)
 
 int	ft_check_if_mandelbort(int x, int y, int iteration)
 {
-	double complex	z;
-	double complex	c;
-	int				i;
+	t_complex	z;
+	t_complex	c;
+	double		tmp;
+	int			i;
 
-	z = 0 + 0 * I;
-	c = ((x - 400) * 4) / 800. + ((y - 300) * 3) / 600. * I;
+	z.real = 0;
+	z.imag = 0;
+	c.real = ((x - 400) * 4) / 800.;
+	c.imag = ((y - 400) * 4) / 800.;
 	i = 0;
 	while (i < iteration)
 	{
-		z = (z * z) + c;
-		if (cabs(z) > 2)
+		tmp = z.real;
+		z.real = ((z.real * z.real) - (z.imag * z.imag)) + c.real;
+		z.imag = (z.imag * tmp * 2) + c.imag;
+		if (sqrt(pow(z.real, 2) + pow(z.imag, 2)) > 2)
 			return (i);
 		i++;
 	}
 	return (iteration);
-
 }
 
 int get_color(int iterations, int max_iterations)
@@ -46,11 +47,11 @@ int main()
 	int		color;
 
 	mlx.mlx = mlx_init();
-	mlx.iteration = 100;
-	mlx.win = mlx_new_window(mlx.mlx, 800, 600, "fract-ol");
-	mlx.img = mlx_new_image(mlx.mlx, 800, 600);
+	mlx.iteration = 250;
+	mlx.win = mlx_new_window(mlx.mlx, 800, 800, "fract-ol");
+	mlx.img = mlx_new_image(mlx.mlx, 800, 800);
 	mlx.add = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_len, &mlx.endian);
-	for (int j = 0; j < 600; j++)
+	for (int j = 0; j < 800; j++)
 	{
 		for (int i = 0; i < 800; i++)
 		{
