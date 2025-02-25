@@ -25,8 +25,8 @@ int	ft_check_if_mandelbrot(int x, int y, int iteration)
 
 	z.real = 0;
 	z.imag = 0;
-	c.real = (x - 400) / 200.;
-	c.imag = (y - 400) / 200.;
+	c.real = (x - (WIDTH / 2)) * MAX_X / (double)WIDTH;
+	c.imag = (y - (HEIGHT / 2)) * MAX_Y / (double)HEIGHT;
 	i = 0;
 	while (i < iteration)
 	{
@@ -49,10 +49,10 @@ void	ft_put_mandelbrot(t_mlx *mlx)
 
 	i = 0;
 	j = 0;
-	while (j < 800)
+	while (j < HEIGHT)
 	{
 		i = 0;
-    	while (i < 800)
+    	while (i < WIDTH)
 		{
 			it = ft_check_if_mandelbrot(i, j, mlx->iteration);
 			color = get_color(it, mlx->iteration);
@@ -63,6 +63,14 @@ void	ft_put_mandelbrot(t_mlx *mlx)
 	}
 }
 
+int	mouse_handler(int button, int x, int y, t_mlx *mlx)
+{
+	if (button == 4)
+		printf("scroll up\n");
+	else
+		printf("scroll down\n");
+	return (1);
+}
 
 int main()
 {
@@ -71,10 +79,11 @@ int main()
 
 	mlx.mlx = mlx_init();
 	mlx.iteration = 100;
-	mlx.win = mlx_new_window(mlx.mlx, 800, 800, "fract-ol");
-	mlx.img = mlx_new_image(mlx.mlx, 800, 800);
+	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "fract-ol");
+	mlx.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	mlx.add = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_len, &mlx.endian);
 	ft_put_mandelbrot(&mlx);
+	mlx_mouse_hook(mlx.win, mouse_handler, &mlx);
 	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }

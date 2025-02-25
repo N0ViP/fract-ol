@@ -6,7 +6,7 @@
 /*   By: yjaafar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 05:50:53 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/24 04:29:26 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/25 06:36:11 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
-# define	WIDTH 800
-# define	HEIGHT 800
+# define WIDTH	800
+# define HEIGHT	800
+
+# define MAX_X	4
+# define MAX_Y	4
 
 typedef	struct	s_complex
 {
