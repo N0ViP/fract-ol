@@ -19,6 +19,9 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
+# define	WIDTH 800
+# define	HEIGHT 800
+
 typedef	struct	s_complex
 {
 	double	real;
