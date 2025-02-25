@@ -16,7 +16,7 @@ int get_color(int iterations, int max_iterations)
     return ((color_value << 16) | (color_value << 8) | color_value);
 }
 
-int	ft_check_if_mandelbrot(int x, int y, int iteration)
+int	ft_check_if_mandelbrot(int x, int y, t_mlx *mlx)
 {
 	t_complex	z;
 	t_complex	c;
@@ -25,10 +25,10 @@ int	ft_check_if_mandelbrot(int x, int y, int iteration)
 
 	z.real = 0;
 	z.imag = 0;
-	c.real = (x - (WIDTH / 2)) * MAX_X / (double)WIDTH;
-	c.imag = (y - (HEIGHT / 2)) * MAX_Y / (double)HEIGHT;
+	c.real = (x - (WIDTH / 2)) * mlx->x / (double)WIDTH;
+	c.imag = (y - (HEIGHT / 2)) * mlx->y / (double)HEIGHT;
 	i = 0;
-	while (i < iteration)
+	while (i < mlx->iteration)
 	{
 		tmp = z.real;
 		z.real = ((z.real * z.real) - (z.imag * z.imag)) + c.real;
@@ -37,7 +37,7 @@ int	ft_check_if_mandelbrot(int x, int y, int iteration)
 			return (i);
 		i++;
 	}
-	return (iteration);
+	return (mlx->iteration);
 }
 
 void	ft_put_mandelbrot(t_mlx *mlx)
@@ -54,21 +54,30 @@ void	ft_put_mandelbrot(t_mlx *mlx)
 		i = 0;
     	while (i < WIDTH)
 		{
-			it = ft_check_if_mandelbrot(i, j, mlx->iteration);
+			it = ft_check_if_mandelbrot(i, j, mlx);
 			color = get_color(it, mlx->iteration);
 			put_pixel(mlx, i, j, color);
 			i++;
 		}
 		j++;
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
 int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 4)
-		printf("scroll up\n");
+	{
+		mlx->x *= 1.1;
+		mlx->y *= 1.1;
+	}
 	else
-		printf("scroll down\n");
+	{
+		mlx->x *= 0.9;
+		mlx->y *= 0.9;
+	}
+
+	ft_put_mandelbrot(mlx);
 	return (1);
 }
 
@@ -77,6 +86,8 @@ int main()
 	t_mlx	mlx;
 	int		iteration;
 
+	mlx.x = 4;
+	mlx.y = 4;
 	mlx.mlx = mlx_init();
 	mlx.iteration = 100;
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "fract-ol");
@@ -84,6 +95,5 @@ int main()
 	mlx.add = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_len, &mlx.endian);
 	ft_put_mandelbrot(&mlx);
 	mlx_mouse_hook(mlx.win, mouse_handler, &mlx);
-	mlx_put_image_to_window(mlx.mlx, mlx.win, mlx.img, 0, 0);
 	mlx_loop(mlx.mlx);
 }
