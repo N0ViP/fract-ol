@@ -6,7 +6,7 @@
 /*   By: yjaafar <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 05:50:53 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/25 09:08:35 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/25 09:46:27 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
-# define WIDTH	400
-# define HEIGHT	400
+# define WIDTH	600
+# define HEIGHT	600
 
 typedef	struct	s_complex
 {
@@ -38,8 +38,7 @@ typedef struct	s_mlx
 	int		line_len;
 	int		endian;
 	int		iteration;
-	double	x;
-	double	y;
+	double	size;
 }	t_mlx;
 
 #endif

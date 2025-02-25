@@ -25,8 +25,8 @@ int	ft_check_if_mandelbrot(int x, int y, t_mlx *mlx)
 
 	z.real = 0;
 	z.imag = 0;
-	c.real = (x - (WIDTH / 2)) * mlx->x / (double)WIDTH;
-	c.imag = (y - (HEIGHT / 2)) * mlx->y / (double)HEIGHT;
+	c.real = (x - (WIDTH / 2)) * mlx->size / (double)WIDTH;
+	c.imag = (y - (HEIGHT / 2)) * mlx->size / (double)HEIGHT;
 	i = 0;
 	while (i < mlx->iteration)
 	{
@@ -68,26 +68,23 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 4)
 	{
-		mlx->x *= 1.1;
-		mlx->y *= 1.1;
+		mlx->size *= 1.1;
 	}
 	else
 	{
-		mlx->x *= 0.9;
-		mlx->y *= 0.9;
+		mlx->size *= 0.9;
 	}
 
 	ft_put_mandelbrot(mlx);
 	return (1);
 }
 
-int main()
+int main(void)
 {
 	t_mlx	mlx;
 	int		iteration;
 
-	mlx.x = 4;
-	mlx.y = 4;
+	mlx.size = 4;
 	mlx.mlx = mlx_init();
 	mlx.iteration = 100;
 	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "fract-ol");
