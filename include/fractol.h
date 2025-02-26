@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:56:27 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 04:34:43 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/26 05:32:13 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include "minilibx-linux/mlx.h"
 
 # define WIDTH	600
