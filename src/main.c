@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:31:22 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 03:55:26 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/26 05:13:22 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char *av[])
 	t_mlx	mlx;
 	int		iteration;
 
-	if (ac != 1 || !ft_strcmp(av[1], "brot") || !ft_strcmp(av[1], "julia"))
+	if (ac != 1 && (!ft_strcmp(av[1], "brot") || !ft_strcmp(av[1], "julia")))
 	{
 		init_mlx(&mlx);
 		if (!ft_strcmp(av[1], "brot"))
@@ -65,4 +65,5 @@ int	main(int ac, char *av[])
 	}
 	else
 		write(1, "./fract-ol mandelbrot\nOr\n./fract-ol julia x y\n", 47);
+	return (0);
 }
