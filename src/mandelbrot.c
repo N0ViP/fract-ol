@@ -17,10 +17,10 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 	int			i;
 	t_complex	z;
 	t_complex	c;
-	long double	tmp;
+	double		tmp;
 
-	c.real = (x - (WIDTH / 2)) * (mlx->size / (long double)WIDTH);
-	c.imag = (y - (HEIGHT / 2)) * (mlx->size / (long double)HEIGHT);
+	c.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
+	c.imag = (y - (HEIGHT / 2)) * (mlx->size / (double)HEIGHT);
 	z.real = 0;
 	z.imag = 0;
 	i = 0;
@@ -29,7 +29,7 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 		tmp = z.real;
 		z.real = ((z.real * z.real) - (z.imag * z.imag)) + c.real;
 		z.imag = (2 * tmp * z.imag) + c.imag;
-		if (sqrt((z.real * z.real) + (z.imag * z.imag)) >= 2)
+		if (((z.real * z.real) + (z.imag * z.imag)) >= 4)
 			break ;
 		i++;
 	}

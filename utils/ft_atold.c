@@ -14,10 +14,10 @@
 
 /* ascii to long double */
 
-long double	ft_atold(char *s)
+double	ft_atold(char *s)
 {
-	long double	result;
-	long double	i;
+	double	result;
+	double	i;
 	int			sign;
 
 	result = 0;

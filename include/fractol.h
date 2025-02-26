@@ -26,34 +26,34 @@
 
 typedef struct s_complex
 {
-	long double	real;
-	long double	imag;
+	double	real;
+	double	imag;
 }	t_complex;
 
 typedef struct s_mlx
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*add;
-	int			bpp;
-	int			line_len;
-	int			endian;
-	int			iteration;
-	long double	j_real;
-	long double	j_imag;
-	long double	size;
-	int			set;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*add;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		iteration;
+	double	j_real;
+	double	j_imag;
+	double	size;
+	int		set;
 }	t_mlx;
 
-long double	ft_atold(char *s);
-int			ft_isdigit(char c);
-int			ft_isspace(char c);
-void		julia_set(t_mlx *mlx);
-void		mandelbrot_set(t_mlx *mlx);
-int			get_color(int it, t_mlx *mlx);
-int			ft_strcmp(const char *s1, const char *s2);
-void		put_pixel(int color, int i, int j, t_mlx *mlx);
-int			mouse_handler(int button, int x, int y, t_mlx *mlx);
+double	ft_atold(char *s);
+int		ft_isdigit(char c);
+int		ft_isspace(char c);
+void	julia_set(t_mlx *mlx);
+void	mandelbrot_set(t_mlx *mlx);
+int		get_color(int it, t_mlx *mlx);
+int		ft_strcmp(const char *s1, const char *s2);
+void	put_pixel(int color, int i, int j, t_mlx *mlx);
+int		mouse_handler(int button, int x, int y, t_mlx *mlx);
 
 #endif

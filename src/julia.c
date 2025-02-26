@@ -16,20 +16,17 @@ static int	check_if_julia(int x, int y, t_mlx *mlx)
 {
 	int			i;
 	t_complex	z;
-	t_complex	c;
-	long double	tmp;
+	double		tmp;
 
-	z.real = (x - (WIDTH / 2)) * (mlx->size / (long double)WIDTH);
-	z.imag = (y - (HEIGHT / 2)) * (mlx->size / (long double)HEIGHT);
-	c.real = mlx->j_real;
-	c.imag = mlx->j_imag;
+	z.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
+	z.imag = (y - (HEIGHT / 2)) * (mlx->size / (double)HEIGHT);
 	i = 0;
 	while (i < mlx->iteration)
 	{
 		tmp = z.real;
-		z.real = ((z.real * z.real) - (z.imag * z.imag)) + c.real;
-		z.imag = (2 * tmp * z.imag) + c.imag;
-		if (sqrt((z.real * z.real) + (z.imag * z.imag)) >= 2)
+		z.real = ((z.real * z.real) - (z.imag * z.imag)) + mlx->j_real;
+		z.imag = (2 * tmp * z.imag) + mlx->j_imag;
+		if (((z.real * z.real) + (z.imag * z.imag)) >= 4)
 			break ;
 		i++;
 	}
