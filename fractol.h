@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract-ol.h                                         :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yjaafar <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 05:50:53 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 01:34:45 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/02/26 03:56:27 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/26 04:34:43 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACT_OL_H
-# define FRACT_OL_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-# include <stdio.h>
-# include <complex.h>
 # include <mlx.h>
 # include <math.h>
+# include <unistd.h>
 # include "minilibx-linux/mlx.h"
 
 # define WIDTH	600
@@ -24,13 +23,13 @@
 
 /* long double for more precesion */
 
-typedef	struct	s_complex
+typedef struct s_complex
 {
 	long double	real;
 	long double	imag;
 }	t_complex;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
@@ -40,12 +39,20 @@ typedef struct	s_mlx
 	int			line_len;
 	int			endian;
 	int			iteration;
+	long double	j_real;
+	long double	j_imag;
 	long double	size;
+	int			set;
 }	t_mlx;
 
 long double	ft_atold(char *s);
 int			ft_isdigit(char c);
 int			ft_isspace(char c);
+void		julia_set(t_mlx *mlx);
 void		mandelbrot_set(t_mlx *mlx);
+int			get_color(int it, t_mlx *mlx);
+int			ft_strcmp(const char *s1, const char *s2);
+void		put_pixel(int color, int i, int j, t_mlx *mlx);
+int			mouse_handler(int button, int x, int y, t_mlx *mlx);
 
 #endif
