@@ -22,11 +22,11 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 4)
 	{
-		mlx->size *= 1.1;
+		mlx->size *= 1.10;
 	}
 	else
 	{
-		mlx->size *= 0.9;
+		mlx->size *= 0.90;
 	}
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
@@ -49,12 +49,14 @@ static int	init_mlx(t_mlx *mlx)
 	return (0);
 }
 
-static void	get_set(char *av[], t_mlx *mlx)
+static void	get_set(int ac, char *av[], t_mlx *mlx)
 {
 	if (!ft_strcmp(av[1], "brot"))
 		mlx->set = 0;
 	else if (!ft_strcmp(av[1], "julia"))
 	{
+		if (ac != 4)
+			exit_message();
 		mlx->j_real = ft_atold(av[2]);
 		mlx->j_imag = ft_atold(av[3]);
 		mlx->set = 1;
@@ -80,6 +82,6 @@ int	main(int ac, char *av[])
 	{
 		exit_message();
 	}
-	get_set(av, &mlx);
+	get_set(ac, av, &mlx);
 	return (0);
 }
