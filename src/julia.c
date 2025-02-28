@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:58:44 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 03:44:28 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/28 06:18:46 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_if_julia(int x, int y, t_mlx *mlx)
 	double		tmp;
 
 	z.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
-	z.imag = (y - (HEIGHT / 2)) * (mlx->size / (double)HEIGHT);
+	z.imag = ((HEIGHT / 2) - y) * (mlx->size / (double)HEIGHT);
 	i = 0;
 	while (i < mlx->iteration)
 	{

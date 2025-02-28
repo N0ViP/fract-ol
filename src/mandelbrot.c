@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbort.c                                       :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 00:53:23 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 03:44:41 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/28 06:18:31 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 	double		tmp;
 
 	c.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
-	c.imag = (y - (HEIGHT / 2)) * (mlx->size / (double)HEIGHT);
+	c.imag = ((HEIGHT / 2) - y) * (mlx->size / (double)HEIGHT);
 	z.real = 0;
 	z.imag = 0;
 	i = 0;
