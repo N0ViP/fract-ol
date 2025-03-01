@@ -42,8 +42,10 @@ typedef struct s_mlx
 	int		iteration;
 	double	j_real;
 	double	j_imag;
-	double	size;
+	double	zoom_factor;
 	int		set;
+	double	x_shift;
+	double	y_shift;		
 }	t_mlx;
 
 double	ft_atold(char *s);

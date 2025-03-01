@@ -18,8 +18,8 @@ static int	check_if_julia(int x, int y, t_mlx *mlx)
 	t_complex	z;
 	double		tmp;
 
-	z.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
-	z.imag = ((HEIGHT / 2) - y) * (mlx->size / (double)HEIGHT);
+	z.real = (x - (WIDTH / 2)) * (mlx->zoom_factor / (double)WIDTH);
+	z.imag = ((HEIGHT / 2) - y) * (mlx->zoom_factor / (double)HEIGHT);
 	i = 0;
 	while (i < mlx->iteration)
 	{

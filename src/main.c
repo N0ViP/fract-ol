@@ -20,14 +20,21 @@ static void	exit_message(void)
 
 int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 {
+	double	mouse_real;
+	double	mouse_imag;
+	double	zoom_factor;
+
+	mouse_real = (x - (WIDTH / 2)) * (mlx->zoom_factor / (double)WIDTH);
+	mouse_imag = ((HEIGHT / 2) - y) * (mlx->zoom_factor / (double)HEIGHT);
 	if (button == 4)
-	{
-		mlx->size *= 1.10;
-	}
+		zoom_factor = 1.10;
+	else if (button == 5)
+		zoom_factor = 0.90;
 	else
-	{
-		mlx->size *= 0.90;
-	}
+		return (1);
+	mlx->zoom_factor *= zoom_factor;
+	mlx->x_shift += mouse_real * (1 - zoom_factor);
+	mlx->y_shift += mouse_imag * (1 - zoom_factor);
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
 	else if (mlx->set == 1)
@@ -35,10 +42,13 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 	return (1);
 }
 
+
 static int	init_mlx(t_mlx *mlx)
 {
-	mlx->size = 4;
+	mlx->zoom_factor = 4;
 	mlx->iteration = 100;
+	mlx->x_shift = 0;
+	mlx->y_shift = 0;
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		return (1);

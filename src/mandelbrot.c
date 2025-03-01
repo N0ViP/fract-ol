@@ -19,8 +19,8 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 	t_complex	c;
 	double		tmp;
 
-	c.real = (x - (WIDTH / 2)) * (mlx->size / (double)WIDTH);
-	c.imag = ((HEIGHT / 2) - y) * (mlx->size / (double)HEIGHT);
+	c.real = (x - (WIDTH / 2)) * (mlx->zoom_factor / (double)WIDTH) + mlx->x_shift;
+	c.imag = ((HEIGHT / 2) - y) * (mlx->zoom_factor / (double)HEIGHT) + mlx->y_shift;
 	z.real = 0;
 	z.imag = 0;
 	i = 0;
