@@ -42,7 +42,6 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 	return (1);
 }
 
-
 static int	init_mlx(t_mlx *mlx)
 {
 	mlx->zoom_factor = 4;
@@ -56,6 +55,19 @@ static int	init_mlx(t_mlx *mlx)
 	mlx->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	mlx->add = mlx_get_data_addr(mlx->img,
 			&mlx->bpp, &mlx->line_len, &mlx->endian);
+	return (0);
+}
+
+int	key_handler(int button, t_mlx *mlx)
+{
+	if (button == ESC)
+	{
+		mlx_destroy_image(mlx->mlx, mlx->img);
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
+		exit(0);
+	}
 	return (0);
 }
 
@@ -80,6 +92,7 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 	else
 		julia_set(mlx);
 	mlx_mouse_hook(mlx->win, mouse_handler, mlx);
+	mlx_key_hook(mlx->win, key_handler, mlx);
 	mlx_loop(mlx->mlx);
 }
 

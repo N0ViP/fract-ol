@@ -21,7 +21,7 @@
 
 # define WIDTH	600
 # define HEIGHT	600
-
+# define ESC	65307
 /* long double for more precesion */
 
 typedef struct s_complex
