@@ -61,13 +61,13 @@ static int	init_mlx(t_mlx *mlx)
 int	key_handler(int button, t_mlx *mlx)
 {
 	if (button == ESC)
-	{
-		mlx_destroy_image(mlx->mlx, mlx->img);
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		mlx_destroy_display(mlx->mlx);
-		free(mlx->mlx);
-		exit(0);
-	}
+		esc_handler(mlx);
+	else if (button == PLUS || button == MINS || button == ZERO)
+		zoom_handler(button, mlx);
+	else if (button == W || button == A || button == S || button == D)
+		offset_handler(button, mlx);
+	else if (button == SPACE)
+		iteration_handler(mlx);
 	return (0);
 }
 

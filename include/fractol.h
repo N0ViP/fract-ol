@@ -22,6 +22,14 @@
 # define WIDTH	600
 # define HEIGHT	600
 # define ESC	65307
+# define ZERO	48
+# define PLUS	65
+# define MINS	45
+# define W	119
+# define A	97
+# define S	115
+# define D	100
+# define SPACE	32
 /* long double for more precesion */
 
 typedef struct s_complex
@@ -52,8 +60,12 @@ double	ft_atold(char *s);
 int		ft_isdigit(char c);
 int		ft_isspace(char c);
 void	julia_set(t_mlx *mlx);
+void	esc_handler(t_mlx *mlx);
 void	mandelbrot_set(t_mlx *mlx);
 int		get_color(int it, t_mlx *mlx);
+void	iteration_handler(t_mlx *mlx);
+void	zoom_handler(int button, t_mlx *mlx);
+void	offset_handler(int button, t_mlx *mlx);
 int		ft_strcmp(const char *s1, const char *s2);
 void	put_pixel(int color, int i, int j, t_mlx *mlx);
 int		mouse_handler(int button, int x, int y, t_mlx *mlx);
