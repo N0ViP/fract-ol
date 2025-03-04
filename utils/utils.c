@@ -14,12 +14,9 @@
 
 int	get_color(int it, t_mlx *mlx)
 {
-	int	tmp;
-
 	if (it == mlx->iteration)
-		return (0X00000000);
-	tmp = ((it * 255) / mlx->iteration);
-	return ((tmp << 16) | (tmp << 8) | tmp);
+		return (0x000000);
+	return ((it * 5) << 16 | (it * 3) << 8 | (it * 7));
 }
 
 void	put_pixel(int color, int i, int j, t_mlx *mlx)
@@ -59,6 +56,8 @@ void	zoom_handler(int button, t_mlx *mlx)
 		julia_set(mlx);
 }
 
+#include <stdio.h>
+
 void	offset_handler(int button, t_mlx *mlx)
 {
 	if (button == W)
@@ -77,7 +76,7 @@ void	offset_handler(int button, t_mlx *mlx)
 
 void	iteration_handler(t_mlx *mlx)
 {
-	mlx->iteration += 5;
+	mlx->iteration += 100;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
 	else
