@@ -44,10 +44,6 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 
 static int	init_mlx(t_mlx *mlx)
 {
-	mlx->zoom_factor = 4;
-	mlx->iteration = 100;
-	mlx->x_shift = 0;
-	mlx->y_shift = 0;
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		return (1);
@@ -66,8 +62,6 @@ int	key_handler(int button, t_mlx *mlx)
 		zoom_handler(button, mlx);
 	else if (button == W || button == A || button == S || button == D)
 		offset_handler(button, mlx);
-	else if (button == SPACE)
-		iteration_handler(mlx);
 	return (0);
 }
 
@@ -99,12 +93,23 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 int	main(int ac, char *av[])
 {
 	t_mlx	mlx;
-	int		iteration;
 
+	mlx.mlx = NULL;
+	mlx.win = NULL;
+	mlx.img = NULL;
+	mlx.add = NULL;
+	mlx.bpp = 0;
+	mlx.line_len = 0;
+	mlx.endian = 0;
+	mlx.iteration = 100;
+	mlx.j_real = 0;
+	mlx.j_imag = 0;
+	mlx.zoom_factor = 4;
+	mlx.set = 0;
+	mlx.x_shift = 0;
+	mlx.y_shift = 0;
 	if (ac == 1)
-	{
 		exit_message();
-	}
 	get_set(ac, av, &mlx);
 	return (0);
 }

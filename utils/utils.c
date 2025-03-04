@@ -40,9 +40,9 @@ void	esc_handler(t_mlx *mlx)
 void	zoom_handler(int button, t_mlx *mlx)
 {
 	if (button == PLUS)
-		mlx->zoom_factor *= 0,9;
+		mlx->iteration += 10;
 	else if (button == MINS)
-		mlx->zoom_factor *= 1.1;
+		mlx->iteration -= 10;
 	else
 	{
 		mlx->iteration = 100;
@@ -56,8 +56,6 @@ void	zoom_handler(int button, t_mlx *mlx)
 		julia_set(mlx);
 }
 
-#include <stdio.h>
-
 void	offset_handler(int button, t_mlx *mlx)
 {
 	if (button == W)
@@ -68,15 +66,6 @@ void	offset_handler(int button, t_mlx *mlx)
 		mlx->x_shift -= 0.1;
 	else
 		mlx->x_shift += 0.1;
-	if (mlx->set == 0)
-		mandelbrot_set(mlx);
-	else
-		julia_set(mlx);
-}
-
-void	iteration_handler(t_mlx *mlx)
-{
-	mlx->iteration += 100;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
 	else
