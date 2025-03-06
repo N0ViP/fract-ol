@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 02:58:44 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/28 06:18:46 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:13:07 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ static int	check_if_julia(int x, int y, t_mlx *mlx)
 	t_complex	z;
 	double		tmp;
 
-	z.real = (x - (WIDTH / 2)) * (mlx->zoom_factor / (double)WIDTH) + mlx->x_shift;
-	z.imag = ((HEIGHT / 2) - y) * (mlx->zoom_factor / (double)HEIGHT) + mlx->y_shift;
+	z.real = (x - (WIDTH / 2)) * (mlx->zoom_factor
+			/ (double)WIDTH) + mlx->x_shift;
+	z.imag = ((HEIGHT / 2) - y) * (mlx->zoom_factor
+			/ (double)HEIGHT) + mlx->y_shift;
 	i = 0;
+	if (mlx->iteration <= 0)
+		mlx->iteration = 100;
 	while (i < mlx->iteration)
 	{
 		tmp = z.real;

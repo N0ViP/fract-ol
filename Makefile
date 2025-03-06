@@ -11,6 +11,7 @@ SRC		=	src/main.c	\
 UTILS	=	utils/ft_atold.c	\
 			utils/ft_isspace.c	\
 			utils/utils.c		\
+			utils/utils_1.c		\
 			utils/ft_isdigit.c	\
 			utils/ft_strcmp.c
 

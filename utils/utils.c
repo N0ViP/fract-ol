@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:42:47 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 03:46:42 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:20:49 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	esc_handler(t_mlx *mlx)
 void	zoom_handler(int button, t_mlx *mlx)
 {
 	if (button == PLUS)
-		mlx->iteration += 10;
+		mlx->iteration += 50;
 	else if (button == MINS)
-		mlx->iteration -= 10;
+		mlx->iteration -= 50;
 	else
 	{
 		mlx->iteration = 100;
 		mlx->zoom_factor = 4;
+		mlx->x_shift = 0;
+		mlx->y_shift = 0;
 	}
-	mlx->x_shift = 0;
-	mlx->y_shift = 0;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
 	else

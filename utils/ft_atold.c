@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 00:11:35 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 00:12:31 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:48:36 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ double	ft_atold(char *s)
 {
 	double	result;
 	double	i;
-	int			sign;
+	int		sign;
 
 	result = 0;
 	while (ft_isspace(*s))

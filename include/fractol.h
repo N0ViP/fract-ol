@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:56:27 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/26 05:32:13 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:03:44 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT	600
 # define ESC	65307
 # define ZERO	48
-# define PLUS	65
+# define PLUS	65451
 # define MINS	45
 # define W	119
 # define A	97
@@ -63,7 +63,7 @@ void	julia_set(t_mlx *mlx);
 void	esc_handler(t_mlx *mlx);
 void	mandelbrot_set(t_mlx *mlx);
 int		get_color(int it, t_mlx *mlx);
-void	iteration_handler(t_mlx *mlx);
+int		key_handler(int button, t_mlx *mlx);
 void	zoom_handler(int button, t_mlx *mlx);
 void	offset_handler(int button, t_mlx *mlx);
 int		ft_strcmp(const char *s1, const char *s2);
