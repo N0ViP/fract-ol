@@ -25,10 +25,10 @@
 # define ZERO	48
 # define PLUS	65451
 # define MINS	45
-# define W	119
-# define A	97
-# define S	115
-# define D	100
+# define TOP	65362
+# define DOWN	65364
+# define LEFT	65361
+# define RIGHT	65363
 # define SPACE	32
 /* long double for more precesion */
 

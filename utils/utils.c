@@ -58,11 +58,11 @@ void	zoom_handler(int button, t_mlx *mlx)
 
 void	offset_handler(int button, t_mlx *mlx)
 {
-	if (button == W)
+	if (button == TOP)
 		mlx->y_shift += mlx->zoom_factor * 0.1;
-	else if (button == S)
+	else if (button == DOWN)
 		mlx->y_shift -= mlx->zoom_factor * 0.1;
-	else if (button == A)
+	else if (button == LEFT)
 		mlx->x_shift -= mlx->zoom_factor * 0.1;
 	else
 		mlx->x_shift += mlx->zoom_factor * 0.1;

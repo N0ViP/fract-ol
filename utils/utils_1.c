@@ -18,7 +18,7 @@ int	key_handler(int button, t_mlx *mlx)
 		esc_handler(mlx);
 	else if (button == PLUS || button == MINS || button == ZERO)
 		zoom_handler(button, mlx);
-	else if (button == W || button == A || button == S || button == D)
+	else if (button == TOP || button == LEFT || button == DOWN || button == RIGHT)
 		offset_handler(button, mlx);
 	return (0);
 }
