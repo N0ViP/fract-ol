@@ -14,9 +14,17 @@
 
 int	get_color(int it, t_mlx *mlx)
 {
+	double	t;
+	int		red;
+	int		green;
+	int		blue;
 	if (it == mlx->iteration)
 		return (0x000000);
-	return ((it * 5) << 16 | (it * 3) << 8 | (it * 7));
+	t = (double)it / mlx->iteration;
+	red = (int)(pow(it * 5, 1.1)) & 0xFF;
+	green = (int)(pow(it * 2, 1.1)) & 0xFF;
+	blue = (int)(pow(it * 9, 1.2)) & 0xFF;
+	return (red << 16 | green << 8 | blue);
 }
 
 void	put_pixel(int color, int i, int j, t_mlx *mlx)
