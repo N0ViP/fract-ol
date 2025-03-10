@@ -12,19 +12,18 @@
 
 #include "fractol.h"
 
-int	get_color(int it, t_mlx *mlx)
+int	get_color(int iteration, t_mlx *mlx)
 {
-	double	t;
-	int		red;
-	int		green;
-	int		blue;
-	if (it == mlx->iteration)
-		return (0x000000);
-	t = (double)it / mlx->iteration;
-	red = (int)(pow(it * 5, 1.1)) & 0xFF;
-	green = (int)(pow(it * 2, 1.1)) & 0xFF;
-	blue = (int)(pow(it * 9, 1.2)) & 0xFF;
-	return (red << 16 | green << 8 | blue);
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	double			t;
+
+	t = ((double) iteration + 2) / mlx->iteration;
+	r = (unsigned char) (9 * (1 - t) * t * t * t * 255);
+	g = (unsigned char) (15 * (1 - t) * (1 - t) * t * t * 255);
+	b = (unsigned char) (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	return (r << 16 | g << 8 | b);
 }
 
 void	put_pixel(int color, int i, int j, t_mlx *mlx)
@@ -48,9 +47,9 @@ void	esc_handler(t_mlx *mlx)
 void	zoom_handler(int button, t_mlx *mlx)
 {
 	if (button == PLUS)
-		mlx->iteration += 50;
+		mlx->iteration += 10;
 	else if (button == MINS)
-		mlx->iteration -= 50;
+		mlx->iteration -= 10;
 	else
 	{
 		mlx->iteration = 100;
@@ -60,8 +59,10 @@ void	zoom_handler(int button, t_mlx *mlx)
 	}
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else
+	else if (mlx->set == 1)
 		julia_set(mlx);
+	else
+		polynomial_set(mlx);
 }
 
 void	offset_handler(int button, t_mlx *mlx)
@@ -76,6 +77,8 @@ void	offset_handler(int button, t_mlx *mlx)
 		mlx->x_shift += mlx->zoom_factor * 0.1;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else
+	else if (mlx->set == 1)
 		julia_set(mlx);
+	else
+		polynomial_set(mlx);
 }

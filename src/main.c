@@ -42,14 +42,18 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 		mlx->j_imag = ft_atold(av[3]);
 		mlx->set = 1;
 	}
+	else if (!ft_strcmp(av[1], "ship"))
+		mlx->set = 2;
 	else
 		exit_message();
 	if (init_mlx(mlx) == 1)
 		exit(1);
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else
+	else if (mlx->set == 1)
 		julia_set(mlx);
+	else
+		polynomial_set(mlx);
 	mlx_mouse_hook(mlx->win, mouse_handler, mlx);
 	mlx_key_hook(mlx->win, key_handler, mlx);
 	mlx_loop(mlx->mlx);
@@ -60,7 +64,7 @@ int	main(int ac, char *av[])
 	t_mlx	mlx;
 
 	mlx = (t_mlx) {0};
-	mlx.iteration = 100;
+	mlx.iteration = 250;
 	mlx.zoom_factor = 4;
 	if (ac == 1)
 		exit_message();

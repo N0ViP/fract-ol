@@ -62,6 +62,7 @@ int		ft_isspace(char c);
 void	julia_set(t_mlx *mlx);
 void	esc_handler(t_mlx *mlx);
 void	mandelbrot_set(t_mlx *mlx);
+void	polynomial_set(t_mlx *mlx);
 int		get_color(int it, t_mlx *mlx);
 int		key_handler(int button, t_mlx *mlx);
 void	zoom_handler(int button, t_mlx *mlx);
