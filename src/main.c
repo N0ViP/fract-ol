@@ -42,7 +42,7 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 		mlx->j_imag = ft_atold(av[3]);
 		mlx->set = 1;
 	}
-	else if (!ft_strcmp(av[1], "ship"))
+	else if (!ft_strcmp(av[1], "ploy"))
 		mlx->set = 2;
 	else
 		exit_message();
