@@ -56,6 +56,7 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 		polynomial_set(mlx);
 	mlx_mouse_hook(mlx->win, mouse_handler, mlx);
 	mlx_key_hook(mlx->win, key_handler, mlx);
+	mlx_do_key_autorepeaton(mlx->mlx);	// doesnt work
 	mlx_loop(mlx->mlx);
 }
 
