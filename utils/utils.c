@@ -19,7 +19,7 @@ int	get_color(int iteration, t_mlx *mlx)
 	unsigned char	b;
 	double			t;
 
-	t = ((double) iteration + 2) / mlx->iteration;
+	t = ((double) iteration + 1) / mlx->iteration;
 	r = (unsigned char) (9 * (1 - t) * t * t * t * 255);
 	g = (unsigned char) (15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (unsigned char) (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
@@ -52,7 +52,7 @@ void	zoom_handler(int button, t_mlx *mlx)
 		mlx->iteration -= 10;
 	else
 	{
-		mlx->iteration = 100;
+		mlx->iteration = 250;
 		mlx->zoom_factor = 4;
 		mlx->x_shift = 0;
 		mlx->y_shift = 0;

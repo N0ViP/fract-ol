@@ -14,13 +14,13 @@
 
 static void	exit_message(void)
 {
-	write(1, "./fract-ol brot\nOr\n./fract-ol julia x y\n", 40);
+	write(1, "./fract-ol brot\nOr\n./fract-ol poly\nOr\n./fract-ol julia x y\n", 59);
 	exit(1);
 }
 
 static int	init_mlx(t_mlx *mlx)
 {
-	mlx->mlx = mlx_init();
+	mlx->mlx = mlx_init();	// error here
 	if (!mlx->mlx)
 		return (1);
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fract-ol");
@@ -42,7 +42,7 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 		mlx->j_imag = ft_atold(av[3]);
 		mlx->set = 1;
 	}
-	else if (!ft_strcmp(av[1], "ploy"))
+	else if (!ft_strcmp(av[1], "poly"))
 		mlx->set = 2;
 	else
 		exit_message();
