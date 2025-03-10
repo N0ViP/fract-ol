@@ -20,7 +20,7 @@ static void	exit_message(void)
 
 static int	init_mlx(t_mlx *mlx)
 {
-	mlx->mlx = mlx_init();	// error here
+	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
 		return (1);
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fract-ol");
@@ -56,7 +56,7 @@ static void	get_set(int ac, char *av[], t_mlx *mlx)
 		polynomial_set(mlx);
 	mlx_mouse_hook(mlx->win, mouse_handler, mlx);
 	mlx_key_hook(mlx->win, key_handler, mlx);
-	mlx_do_key_autorepeaton(mlx->mlx);	// doesnt work
+	mlx_do_key_autorepeaton(mlx->mlx);
 	mlx_loop(mlx->mlx);
 }
 
@@ -65,7 +65,7 @@ int	main(int ac, char *av[])
 	t_mlx	mlx;
 
 	mlx = (t_mlx) {0};
-	mlx.iteration = 250;
+	mlx.iteration = 500;
 	mlx.zoom_factor = 4;
 	if (ac == 1)
 		exit_message();
