@@ -7,7 +7,7 @@ FLAGS	=	-g
 SRC		=	src/main.c			\
 			src/julia.c			\
 			src/mandelbrot.c	\
-			src/julia_ship.c
+			src/polynomial.c
 
 UTILS	=	utils/ft_atold.c	\
 			utils/ft_isspace.c	\
