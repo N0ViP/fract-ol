@@ -30,45 +30,47 @@ static int	init_mlx(t_mlx *mlx)
 	return (0);
 }
 
-static void	get_set(int ac, char *av[], t_mlx *mlx)
+static int	get_set(int ac, char *av[], t_mlx *mlx)
 {
 	if (!ft_strcmp(av[1], "brot"))
-		mlx->set = 0;
+		return (0);
 	else if (!ft_strcmp(av[1], "julia"))
 	{
 		if (ac != 4)
 			exit_message();
 		mlx->j_real = ft_atold(av[2]);
 		mlx->j_imag = ft_atold(av[3]);
-		mlx->set = 1;
+		return (1);
 	}
 	else if (!ft_strcmp(av[1], "poly"))
-		mlx->set = 2;
+		return (2);
 	else
-		exit_message();
-	if (init_mlx(mlx) == 1)
-		exit(1);
-	if (mlx->set == 0)
-		mandelbrot_set(mlx);
-	else if (mlx->set == 1)
-		julia_set(mlx);
-	else
-		polynomial_set(mlx);
-	mlx_mouse_hook(mlx->win, mouse_handler, mlx);
-	mlx_key_hook(mlx->win, key_handler, mlx);
-	mlx_do_key_autorepeaton(mlx->mlx);
-	mlx_loop(mlx->mlx);
+		return (exit_message(), -1);
 }
 
 int	main(int ac, char *av[])
 {
 	t_mlx	mlx;
+	int		set;
 
 	mlx = (t_mlx) {0};
-	mlx.iteration = 500;
+	mlx.iteration = 50;
 	mlx.zoom_factor = 4;
 	if (ac == 1)
 		exit_message();
-	get_set(ac, av, &mlx);
+	set = get_set(ac, av, &mlx);
+	mlx.set = set;
+	if (init_mlx(&mlx) == 1)
+		exit(1);
+	if (mlx.set == 0)
+		mandelbrot_set(&mlx);
+	else if (mlx.set == 1)
+		julia_set(&mlx);
+	else
+		polynomial_set(&mlx);
+	mlx_mouse_hook(mlx.win, mouse_handler, &mlx);
+	mlx_key_hook(mlx.win, key_handler, &mlx);
+	mlx_hook(mlx.win, 17, 1, exit_handler, &mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 }

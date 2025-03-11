@@ -15,7 +15,7 @@
 int	key_handler(int button, t_mlx *mlx)
 {
 	if (button == ESC)
-		esc_handler(mlx);
+		exit_handler(mlx);
 	else if (button == PLUS || button == MINS || button == ZERO)
 		zoom_handler(button, mlx);
 	else if (button == TOP || button == LEFT || button == DOWN || button == RIGHT)

@@ -37,13 +37,14 @@ void	put_pixel(int color, int i, int j, t_mlx *mlx)
 	*offset = color;
 }
 
-void	esc_handler(t_mlx *mlx)
+int	exit_handler(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
 	exit(0);
+	return (0);
 }
 
 void	zoom_handler(int button, t_mlx *mlx)
@@ -54,7 +55,7 @@ void	zoom_handler(int button, t_mlx *mlx)
 		mlx->iteration -= 10;
 	else
 	{
-		mlx->iteration = 250;
+		mlx->iteration = 50;
 		mlx->zoom_factor = 4;
 		mlx->x_shift = 0;
 		mlx->y_shift = 0;

@@ -60,7 +60,7 @@ double	ft_atold(char *s);
 int		ft_isdigit(char c);
 int		ft_isspace(char c);
 void	julia_set(t_mlx *mlx);
-void	esc_handler(t_mlx *mlx);
+int		exit_handler(t_mlx *mlx);
 void	mandelbrot_set(t_mlx *mlx);
 void	polynomial_set(t_mlx *mlx);
 int		get_color(int it, t_mlx *mlx);
