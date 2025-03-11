@@ -19,6 +19,8 @@ int	get_color(int iteration, t_mlx *mlx)
 	unsigned char	b;
 	double			t;
 
+	if (iteration == mlx->iteration)
+		return (0);
 	t = ((double) iteration + 2) / mlx->iteration;
 	r = (unsigned char) (9 * (1 - t) * t * t * t * 255);
 	g = (unsigned char) (15 * (1 - t) * (1 - t) * t * t * 255);
