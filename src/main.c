@@ -70,7 +70,7 @@ int	main(int ac, char *av[])
 		polynomial_set(&mlx);
 	mlx_mouse_hook(mlx.win, mouse_handler, &mlx);
 	mlx_key_hook(mlx.win, key_handler, &mlx);
-	mlx_hook(mlx.win, 17, 1, exit_handler, &mlx);
+	mlx_hook(mlx.win, 17, 0, exit_handler, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
