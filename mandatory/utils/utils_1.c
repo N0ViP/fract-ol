@@ -42,9 +42,7 @@ int	mouse_handler(int button, int x, int y, t_mlx *mlx)
 	mlx->y_shift += mouse_imag * (1 - zoom_factor);
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else if (mlx->set == 1)
-		julia_set(mlx);
 	else
-		polynomial_set(mlx);
-	return (1);
+		julia_set(mlx);
+	return (0);
 }

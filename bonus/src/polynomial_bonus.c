@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static int	check_if_polynomial(int x, int y, t_mlx * mlx)
 {

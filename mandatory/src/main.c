@@ -42,8 +42,6 @@ static int	get_set(int ac, char *av[], t_mlx *mlx)
 		mlx->j_imag = ft_atold(av[3]);
 		return (1);
 	}
-	else if (!ft_strcmp(av[1], "poly"))
-		return (2);
 	else
 		return (exit_message(), -1);
 }
@@ -64,13 +62,11 @@ int	main(int ac, char *av[])
 		exit(1);
 	if (mlx.set == 0)
 		mandelbrot_set(&mlx);
-	else if (mlx.set == 1)
-		julia_set(&mlx);
 	else
-		polynomial_set(&mlx);
+		julia_set(&mlx);
 	mlx_mouse_hook(mlx.win, mouse_handler, &mlx);
 	mlx_key_hook(mlx.win, key_handler, &mlx);
-	mlx_hook(mlx.win, 17, 0, exit_handler, &mlx);
+	mlx_hook(mlx.win, 17, 1, exit_handler, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
