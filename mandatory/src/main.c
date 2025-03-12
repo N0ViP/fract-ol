@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:31:22 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/06 14:32:54 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/12 21:22:55 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	exit_message(void)
 {
-	write(1, "./fract-ol brot\nOr\n./fract-ol poly\nOr\n./fract-ol julia x y\n", 59);
+	write(1, "./fract-ol brot\nOr\n./fract-ol julia x y\n", 40);
 	exit(1);
 }
 
@@ -51,7 +51,7 @@ int	main(int ac, char *av[])
 	t_mlx	mlx;
 	int		set;
 
-	mlx = (t_mlx) {0};
+	mlx = (t_mlx){0};
 	mlx.iteration = 50;
 	mlx.zoom_factor = 4;
 	if (ac == 1)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   utils_1_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 13:51:52 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/06 14:04:10 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/03/12 21:02:40 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/03/12 21:09:21 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	key_handler(int button, t_mlx *mlx)
 		exit_handler(mlx);
 	else if (button == PLUS || button == MINS || button == ZERO)
 		zoom_handler(button, mlx);
-	else if (button == TOP || button == LEFT || button == DOWN || button == RIGHT)
+	else if (button == TOP || button == LEFT
+		|| button == DOWN || button == RIGHT)
 		offset_handler(button, mlx);
 	return (0);
 }

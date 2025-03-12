@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:56:27 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/06 14:03:44 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/12 21:26:12 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include "minilibx-linux/mlx.h"
 
-# define WIDTH	600
+# define WIDTH 600
 # define HEIGHT	600
 # define ESC	65307
 # define ZERO	48
