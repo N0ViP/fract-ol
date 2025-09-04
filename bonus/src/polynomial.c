@@ -23,6 +23,8 @@ static int	check_if_polynomial(int x, int y, t_mlx *mlx)
 			/ (double)WIDTH) + mlx->x_shift;
 	z.imag = (WIDTH / 2 - y) * (mlx->zoom_factor
 			/ (double)WIDTH) + mlx->y_shift;
+	if (mlx->iteration <= 0)
+		mlx->iteration = 50;
 	while (i < mlx->iteration)
 	{
 		tmp = z.real;

@@ -24,7 +24,7 @@ int	check_if_julia(int x, int y, t_mlx *mlx)
 			/ (double)HEIGHT) + mlx->y_shift;
 	i = 0;
 	if (mlx->iteration <= 0)
-		mlx->iteration = 100;
+		mlx->iteration = 50;
 	while (i < mlx->iteration)
 	{
 		tmp = z.real;

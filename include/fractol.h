@@ -20,8 +20,8 @@
 # include <stdlib.h>
 # include <pthread.h>
 
-# define WIDTH 1000
-# define HEIGHT	1000
+# define WIDTH 800
+# define HEIGHT	800
 # define ESC	65307
 # define ZERO	48
 # define PLUS	61
@@ -31,6 +31,7 @@
 # define LEFT	65361
 # define RIGHT	65363
 # define SPACE	32
+
 /* long double for more precesion */
 
 typedef struct s_complex

@@ -27,7 +27,7 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 	z.imag = 0;
 	i = 0;
 	if (mlx->iteration <= 0)
-		mlx->iteration = 100;
+		mlx->iteration = 50;
 	while (i < mlx->iteration)
 	{
 		tmp = z.real;

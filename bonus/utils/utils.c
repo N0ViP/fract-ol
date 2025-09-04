@@ -71,13 +71,13 @@ void	zoom_handler(int button, t_mlx *mlx)
 void	offset_handler(int button, t_mlx *mlx)
 {
 	if (button == TOP)
-		mlx->y_shift -= mlx->zoom_factor * 0.1;
+		mlx->y_shift -= mlx->zoom_factor * 0.005;
 	else if (button == DOWN)
-		mlx->y_shift += mlx->zoom_factor * 0.1;
+		mlx->y_shift += mlx->zoom_factor * 0.005;
 	else if (button == LEFT)
-		mlx->x_shift += mlx->zoom_factor * 0.1;
+		mlx->x_shift += mlx->zoom_factor * 0.005;
 	else
-		mlx->x_shift -= mlx->zoom_factor * 0.1;
+		mlx->x_shift -= mlx->zoom_factor * 0.005;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
 	else if (mlx->set == 1)
