@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   mandelbrot_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 00:53:23 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/06 14:12:37 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/03/12 21:01:22 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/03/12 21:01:24 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,8 @@ static int	check_if_mandelbrot(int x, int y, t_mlx *mlx)
 
 void	mandelbrot_set(t_mlx *mlx)
 {
-	int	i;
-	int	j;
-	int	it;
-	int	color;
+	pthread_t	threads[8];
 
-	j = 0;
-	while (j < HEIGHT)
-	{
-		i = 0;
-		while (i < WIDTH)
-		{
-			it = check_if_mandelbrot(i, j, mlx);
-			color = get_color(it, mlx);
-			put_pixel(color, i, j, mlx);
-			i++;
-		}
-		j++;
-	}
+	init_threads(threads, mlx, check_if_mandelbrot);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }

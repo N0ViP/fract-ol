@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "fractol.h"
 
 static int	check_if_polynomial(int x, int y, t_mlx *mlx)
 {
@@ -39,23 +39,8 @@ static int	check_if_polynomial(int x, int y, t_mlx *mlx)
 
 void	polynomial_set(t_mlx *mlx)
 {
-	int	color;
-	int	iteration;
-	int	i;
-	int	j;
+	pthread_t	threads[8];
 
-	j = 0;
-	while (j < HEIGHT)
-	{
-		i = 0;
-		while (i < WIDTH)
-		{
-			iteration = check_if_polynomial(i, j, mlx);
-			color = get_color(iteration, mlx);
-			put_pixel(color, i, j, mlx);
-			i++;
-		}
-		j++;
-	}
+	init_threads(threads, mlx, check_if_polynomial);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }

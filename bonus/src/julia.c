@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "fractol.h"
 
-static int	check_if_julia(int x, int y, t_mlx *mlx)
+int	check_if_julia(int x, int y, t_mlx *mlx)
 {
 	int			i;
 	t_complex	z;
@@ -39,23 +39,8 @@ static int	check_if_julia(int x, int y, t_mlx *mlx)
 
 void	julia_set(t_mlx *mlx)
 {
-	int	i;
-	int	j;
-	int	it;
-	int	color;
+	pthread_t	threads[8];
 
-	j = 0;
-	while (j < HEIGHT)
-	{
-		i = 0;
-		while (i < WIDTH)
-		{
-			it = check_if_julia(i, j, mlx);
-			color = get_color(it, mlx);
-			put_pixel(color, i, j, mlx);
-			i++;
-		}
-		j++;
-	}
+	init_threads(threads, mlx, check_if_julia);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }

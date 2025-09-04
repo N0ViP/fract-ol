@@ -1,51 +1,34 @@
-NAME		=	fractol
+NAME		=	fract-ol
 
-CC			=	cc
+CC			=	gcc
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -O3 -g
 
-SRC			=	mandatory/src/main.c			\
-				mandatory/src/julia.c			\
-				mandatory/src/mandelbrot.c
+LIBS		=	-Lminilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 
-UTILS		=	mandatory/utils/ft_atold.c		\
-				mandatory/utils/ft_isspace.c	\
-				mandatory/utils/utils.c			\
-				mandatory/utils/utils_1.c		\
-				mandatory/utils/ft_isdigit.c	\
-				mandatory/utils/ft_strcmp.c
+INCLUDE		=	-Iinclude/ -Iminilibx-linux
 
-LIBS		=	-Lmlx_linux -lmlx_Linux -L/usr/include/minilibx-linux -lXext -lX11 -lm -lz
+SRC_BONUS	= 	bonus/src/main.c			\
+				bonus/src/julia.c			\
+				bonus/src/mandelbrot.c	\
+				bonus/src/polynomial.c	
 
-INCLUDE		=	-Iinclude/ -I/usr/include/minilibx-linux/
-
-OBJS		=	$(SRC:.c=.o) $(UTILS:.c=.o)
-
-NAME_BONUS	=	fractol_bonus
-
-SRC_BONUS	= 	bonus/src/main_bonus.c			\
-				bonus/src/julia_bonus.c			\
-				bonus/src/mandelbrot_bonus.c	\
-				bonus/src/polynomial_bonus.c	
-
-UTILS_BONUS	=	bonus/utils/ft_atold_bonus.c		\
-				bonus/utils/ft_isspace_bonus.c		\
-				bonus/utils/utils_bonus.c			\
-				bonus/utils/utils_1_bonus.c			\
-				bonus/utils/ft_isdigit_bonus.c		\
-				bonus/utils/ft_strcmp_bonus.c
+UTILS_BONUS	=	bonus/utils/ft_atold.c		\
+				bonus/utils/ft_isspace.c		\
+				bonus/utils/utils.c			\
+				bonus/utils/utils_1.c			\
+				bonus/utils/ft_isdigit.c		\
+				bonus/utils/ft_strcmp.c		\
+				bonus/utils/utils_2.c
 
 OBJS_BONUS = $(SRC_BONUS:.c=.o) $(UTILS_BONUS:.c=.o)
 
 all: $(NAME)
 
-bonus: $(NAME_BONUS)
+bonus: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(LIBS) -o $(NAME)
-
-$(NAME_BONUS): $(OBJS_BONUS)
-	$(CC) $(FLAGS) $(OBJS_BONUS) $(LIBS) -o $(NAME_BONUS)
+$(NAME): $(OBJS_BONUS)
+	$(CC) $(FLAGS) $(OBJS_BONUS) $(LIBS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
@@ -54,7 +37,7 @@ clean:
 	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	rm -f $(NAME) $(NAME_BONUS)
+	rm -f $(NAME)
 
 re: fclean all
 

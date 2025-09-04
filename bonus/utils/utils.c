@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 03:42:47 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/12 21:18:53 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/03/12 21:02:51 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/03/12 21:19:36 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	zoom_handler(int button, t_mlx *mlx)
 	}
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else
+	else if (mlx->set == 1)
 		julia_set(mlx);
+	else
+		polynomial_set(mlx);
 }
 
 void	offset_handler(int button, t_mlx *mlx)
@@ -78,6 +80,8 @@ void	offset_handler(int button, t_mlx *mlx)
 		mlx->x_shift -= mlx->zoom_factor * 0.1;
 	if (mlx->set == 0)
 		mandelbrot_set(mlx);
-	else
+	else if (mlx->set == 1)
 		julia_set(mlx);
+	else
+		polynomial_set(mlx);
 }

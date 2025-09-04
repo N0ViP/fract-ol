@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:56:27 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/06 14:03:44 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/03/12 21:26:12 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include <math.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
-# include "minilibx-linux/mlx.h"
+# include <pthread.h>
 
-# define WIDTH	600
-# define HEIGHT	600
+# define WIDTH 1000
+# define HEIGHT	1000
 # define ESC	65307
 # define ZERO	48
-# define PLUS	65451
+# define PLUS	61
 # define MINS	45
 # define TOP	65362
 # define DOWN	65364
@@ -38,7 +39,18 @@ typedef struct s_complex
 	double	imag;
 }	t_complex;
 
-typedef struct s_mlx
+
+typedef	struct s_mlx	t_mlx;
+
+typedef struct s_calcul_info_height
+{
+	int				height_from;
+	int				height_to;
+	int				(*calcul_fct)(int, int, t_mlx *mlx);
+	t_mlx			*mlx;
+}	t_height_info;
+
+struct s_mlx
 {
 	void	*mlx;
 	void	*win;
@@ -54,7 +66,7 @@ typedef struct s_mlx
 	int		set;
 	double	x_shift;
 	double	y_shift;		
-}	t_mlx;
+};
 
 double	ft_atold(char *s);
 int		ft_isdigit(char c);
@@ -62,6 +74,7 @@ int		ft_isspace(char c);
 void	julia_set(t_mlx *mlx);
 int		exit_handler(t_mlx *mlx);
 void	mandelbrot_set(t_mlx *mlx);
+void	polynomial_set(t_mlx *mlx);
 int		get_color(int it, t_mlx *mlx);
 int		key_handler(int button, t_mlx *mlx);
 void	zoom_handler(int button, t_mlx *mlx);
@@ -69,5 +82,6 @@ void	offset_handler(int button, t_mlx *mlx);
 int		ft_strcmp(const char *s1, const char *s2);
 void	put_pixel(int color, int i, int j, t_mlx *mlx);
 int		mouse_handler(int button, int x, int y, t_mlx *mlx);
+void	init_threads(pthread_t *threads, t_mlx *mlx, int (calcul_fct)(int, int, t_mlx *mlx));
 
 #endif

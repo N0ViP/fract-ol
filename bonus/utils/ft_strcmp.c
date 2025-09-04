@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 21:02:15 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/03/12 21:02:17 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/03/12 21:02:31 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/03/12 21:02:33 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "fractol.h"
 
-int	ft_isspace(char c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	return (c == 32 || (c >= 9 && c <= 13));
+	int	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
