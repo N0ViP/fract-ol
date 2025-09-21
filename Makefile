@@ -2,7 +2,7 @@ NAME		=	fract-ol
 
 CC			=	gcc
 
-FLAGS		=	-Wall -Wextra -Werror -O3 -g
+FLAGS		=	-O3 -g
 
 LIBS		=	-Lminilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 
