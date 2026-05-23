@@ -59,9 +59,9 @@ Controls:
 
 Screenshots:
 
-![](pics/pic%201.png)
-![](pics/pic%202.png)
-![](pics/pic%203.png)
-![](pics/pic%204.png)
-![](pics/pic%205.png)
-![](pics/pic%206.png)
+![](pics/pic1.png)
+![](pics/pic2.png)
+![](pics/pic3.png)
+![](pics/pic4.png)
+![](pics/pic5.png)
+![](pics/pic6.png)
